@@ -46,21 +46,16 @@ function draw() {
   imageMode(CENTER);
   image(towerImage, tower.position.x, tower.position.y, 160, 310);
   pop();
-
+  for (var i = 0; i < balls.length; i++) {
+    showCannonBalls(balls[i]);
+  }
   cannon.display();
   //cannonBall.display();
-  for(var i = 0; i< balls.length; i++) {
-    showCannonBalls(balls[i],i)
-  }
+ 
 }
 
 
-function keyReleased() {
-  if (keyCode === DOWN_ARROW) {
-    //cannonBall.shoot();
-    balls[balls.length-1].shoot()
-  }
-}
+
 function keyPressed(){
   if (keyCode === DOWN_ARROW) {
     var cannonBall = new CannonBall(cannon.x,cannon.y)
@@ -68,8 +63,16 @@ function keyPressed(){
     
   }
 }
-function showCannonBalls(ball,i) {
+
+
+function showCannonBalls(ball) {
   if (ball) {
-    ball.display()
-  } 
+    ball.display();
+  }
+}
+
+function keyReleased() {
+  if (keyCode === DOWN_ARROW) {
+    balls[balls.length - 1].shoot();
+  }
 }
